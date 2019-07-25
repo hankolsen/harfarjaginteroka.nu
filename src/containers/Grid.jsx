@@ -1,16 +1,17 @@
-import React from 'react';
-import ListItem from '../components/ListItem/ListItem';
+import React, { useContext } from 'react';
+import ListItemContainer from './ListItemContainer/ListItemContainer';
+import { AppContext } from '../App';
 
 const Grid = () => {
-  const listItems = [
-    { image: 'train-station', id: 1, title: 'Tågperrong' },
-    { image: 'store-entrance', id: 2, title: 'Affärsentré' }
-  ];
+
+  // Get the list items from AppContext
+  const { items } = useContext(AppContext);
+
   return (
     <ul className="grid">
       {
-        listItems.map(listItem => (
-          <ListItem item={listItem} key={listItem.id}/>
+        items.map(listItem => (
+          <ListItemContainer item={listItem} key={listItem.id}/>
         ))
       }
     </ul>

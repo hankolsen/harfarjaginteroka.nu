@@ -10,8 +10,7 @@ const Placeholder = ({ item }) => {
     if (!item) {
       return;
     }
-    const fromRect = getScreenRect(item, document.body);
-    const { top, left, width, height } = fromRect;
+    const { top, left, width, height } = getScreenRect(item, document.body);
     setStyle({
       top: `${top}px`,
       left: `${left}px`,
@@ -36,7 +35,7 @@ const Placeholder = ({ item }) => {
   }, [style]);
 
   return (
-    <div className="placeholder" style={style}/>
+    <div className="placeholder" style={style} />
   )
 };
 

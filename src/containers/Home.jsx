@@ -9,17 +9,16 @@ const Home = () => {
   const [item, setItem] = useState(null);
   const [url, setUrl] = useState(null);
   const [redirect, setRedirect] = useState(false);
+
   useEffect(() => {
     if (!url) {
       return;
     }
-    const timer = setTimeout(() => {
-      setRedirect(true);
-    }, 750);
+    const timer = setTimeout(() => setRedirect(true), 450);
     return () => clearTimeout(timer);
   }, [url]);
 
-  const showPreview = (el, url) => {
+  const openPage = (el, url) => {
     setItem(el);
     setUrl(url);
   };
@@ -31,7 +30,7 @@ const Home = () => {
   }
 
   return (
-    <HomeContext.Provider value={{ showPreview }}>
+    <HomeContext.Provider value={{ openPage }}>
       <div className="App">
         <Grid />
         <Placeholder item={item} />

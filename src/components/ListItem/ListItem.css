@@ -8,9 +8,6 @@ li {
     flex-direction: column;
     justify-content: center;
     width: 33.333%;
-    /*background: rgba(255, 0, 150, 0.3) no-repeat;*/
-    /*background-size: cover;*/
-    /*background-blend-mode: multiply;*/
 }
 
 a {
@@ -32,7 +29,7 @@ h2 {
     font-family: Helvetica Neue, Arial, sans-serif;
     font-weight: 200;
     text-align: center;
-    text-shadow: 0 2px 5px #000;
+    text-shadow: 0 2px 2px #000;
     transition: transform 0.2s, opacity 0.2s;
     transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 }
@@ -45,6 +42,8 @@ h2 {
 
 .bg {
     background: rgba(255, 0, 150, 0.3) no-repeat;
+    filter: grayscale(20%);
+    opacity: 0.8;
     background-size: cover;
     background-blend-mode: multiply;
     width: 100%;
@@ -52,9 +51,13 @@ h2 {
     position: absolute;
     z-index: -1;
     transition: opacity 0.4s;
-    transition-delay: 0.4s;
+}
+
+li:not(.grid-item--animate):hover .bg {
+    opacity: 1;
 }
 
 .grid-item--animate .bg {
+    transition-delay: 0.4s;
     opacity: 0;
 }

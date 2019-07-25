@@ -1,4 +1,8 @@
 const getScreenRect = (element, screen) => {
+  if (!element || !screen) {
+    return {};
+  }
+
   const elementRect = element.getBoundingClientRect();
   const screenRect = screen.getBoundingClientRect();
 

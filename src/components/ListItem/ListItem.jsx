@@ -1,26 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { HomeContext } from '../../containers/Home';
+import React from 'react';
 
 import './ListItem.css';
 
-const ListItem = ({ item }) => {
-  const { showPreview } = useContext(HomeContext);
-  const [animating, setAnimating] = useState(false);
-  const baseImagePath = '/images';
-  const { image, title } = item;
-  const imagePath = `${baseImagePath}/${image}.jpg`;
+const ListItem = ({ animating, clickHandler, url, title }) => {
 
-  const clickItem = ({ nativeEvent }) => {
-    nativeEvent.preventDefault();
-    const item = nativeEvent.target.closest('li');
-    const bg = item.querySelector('.bg');
-    bg.addEventListener('transitionend', () => {
-      showPreview(item, image);
-    });
-    setAnimating(true);
-
-    return false;
-  };
+  const imagePath = `/images/${url}.jpg`;
 
   const itemStyle = {
     backgroundImage: `url(${imagePath})`,
@@ -31,7 +15,7 @@ const ListItem = ({ item }) => {
   return (
     <li className={classNames}  >
       <div className="bg" style={itemStyle} />
-      <a href={image} onClick={clickItem}>
+      <a href={url} onClick={clickHandler}>
         <h2 className="title title--preview">{title}</h2>
       </a>
     </li>
